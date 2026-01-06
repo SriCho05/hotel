@@ -112,6 +112,7 @@ const botConfig = {
     // Dynamic getter for genAI to ensure it uses the latest key
     get genAI() { return genAI; },
     get GEMINI_AVAILABLE() { return botSettings.geminiEnabled; },
+    get autoReplyEnabled() { return botSettings.autoReplyEnabled; },
     getPersona: () => botSettings.persona,
     getGreetings: () => botSettings.greetings,
     getFallbackAnswer: (question, faqs, lang) => {

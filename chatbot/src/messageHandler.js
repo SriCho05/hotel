@@ -24,6 +24,16 @@ function getOptionPrompt(lang) {
 async function handleMessage(client, msg, userState, config) {
     const user = msg.from;
 
+    // CRITICAL: Ignore Status Updates (Broadcasts)
+    if (msg.isStatus || user === 'status@broadcast') {
+        return;
+    }
+
+    // Check Auto-Reply Toggle
+    if (config.autoReplyEnabled === false) {
+        return;
+    }
+
     // Ignore group messages (automatic replies only for DMs)
     if (user.endsWith('@g.us')) {
         return;
